@@ -10,9 +10,10 @@ CORS(app)
 
 @app.route('/test', methods=['GET'])
 def getResult():
-    input = np.array([[5.5, 2.4, 2.7, 1.]])
-    result = model.predict(input)
-    return jsonify({'result': str(result)})
+    # input = np.array([[5.5, 2.4, 2.7, 1.]])
+    # result = model.predict(input)
+    # return jsonify({'result': str(result)})
+    return "getResult"
 
 @app.route('/predict', methods=['POST'])
 def postInput():
@@ -24,6 +25,6 @@ def postInput():
     x4=insertValues['petalWidthCm']
     input = np.array([[x1, x2, x3, x4]])
     # 進行預測
-    result = model.predict(input)
+    # result = model.predict(input)
 
-    return jsonify({'result': str(result)})
+    return jsonify({'result': str(input)})
