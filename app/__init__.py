@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-import app.model as model
+# import app.model as model
 import numpy as np
 
 from flask import Flask, request, jsonify
@@ -10,10 +10,11 @@ CORS(app)
 
 @app.route('/test', methods=['GET'])
 def getResult():
-    # input = np.array([[5.5, 2.4, 2.7, 1.]])
+    input = np.array([[5.5, 2.4, 2.7, 1.]])
+    result = np.sum(input_array)
     # result = model.predict(input)
-    # return jsonify({'result': str(result)})
-    return "getResult"
+    return jsonify({'result': str(result)})
+    # return "getResult"
 
 @app.route('/predict', methods=['POST'])
 def postInput():
@@ -26,5 +27,5 @@ def postInput():
     input = np.array([[x1, x2, x3, x4]])
     # 進行預測
     # result = model.predict(input)
-
-    return jsonify({'result': str(input)})
+    result = np.sum(input_array)
+    return jsonify({'result': str(result)})
