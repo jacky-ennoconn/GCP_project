@@ -12,12 +12,7 @@ CORS(app)
 def getResult():
     input_array = np.array([[5.5, 2.4, 2.7, 1.]])
     result = np.sum(input_array)
-    response = app.response_class(
-        response=jsonify({'result': str(result)}),
-        status=200,
-        mimetype='application/json'
-    )
-    return [response]  # 返回可迭代對象
+    return jsonify({'result': str(result)})  # 直接返回JSON對象
 
 @app.route('/predict', methods=['POST'])
 def postInput():
@@ -30,9 +25,4 @@ def postInput():
     input_array = np.array([[x1, x2, x3, x4]])
     # 進行預測
     result = np.sum(input_array)
-    response = app.response_class(
-        response=jsonify({'result': str(result)}),
-        status=200,
-        mimetype='application/json'
-    )
-    return [response]  # 返回可迭代對象
+    return jsonify({'result': str(result)})  # 直接返回JSON對象
