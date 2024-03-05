@@ -13,7 +13,12 @@ def getResult():
     input_array = np.array([[5.5, 2.4, 2.7, 1.]])
     result = np.sum(input_array)
     # result = model.predict(input)
-    return jsonify({'result': str(result)})
+    response = app.response_class(
+        response=jsonify({'result': str(result)}),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
     # return "getResult"
 
 @app.route('/predict', methods=['POST'])
@@ -28,4 +33,9 @@ def postInput():
     # 進行預測
     # result = model.predict(input)
     result = np.sum(input_array)
-    return jsonify({'result': str(result)})
+    response = app.response_class(
+        response=jsonify({'result': str(result)}),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
